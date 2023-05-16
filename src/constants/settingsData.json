@@ -1,0 +1,32 @@
+[
+    {
+    "title" : "Account Information",
+    "icon" : "../../assets/icons/profile/user.png",
+    "url" : ""
+ },
+    {
+    "title" : "KYC Information",
+    "icon" : "../../assets/icons/profile/privacy.png",
+    "url" : ""
+ },
+    {
+    "title" : "Terms of Service",
+    "icon" : "../../assets/icons/profile/terms.png",
+    "url" : ""
+ },
+    {
+    "title" : "Support",
+    "icon" : "../../assets/icons/profile/support.png",
+    "url" : ""
+ },
+    {
+    "title" : "Change Password",
+    "icon" : "../../assets/icons/profile/settings.png",
+    "url" : ""
+ },
+    {
+    "title" : "Log Out",
+    "icon" : "../../assets/icons/profile/logout.png",
+    "url" : ""
+ }
+]
