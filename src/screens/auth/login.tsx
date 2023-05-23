@@ -41,7 +41,7 @@ const Login = ({ navigation }: { navigation: any }) => {
     },
     onError: (error: any) => {
       console.log(error.response?.data)
-      new Alert().error(error?.response?.data?.message);
+      new Alert().error(error?.response?.data?.message || "An error occured,please check your internet connection");
     }
   })
 
