@@ -7,14 +7,22 @@ import CustomTextInput from '../../components/common/input/CustomTextInput'
 import Button from '../../components/common/button/Button'
 import { Formik } from 'formik';
 import * as Yup from "yup";
+import { Alert } from '../../helpers/alert'
+import {
+    useMutation,
+} from 'react-query'
+import { createAccount } from '../../services/backend/auth.service'
+import LoadingModal from '../../components/common/LoadingModal'
 
 const initialValues = {
     firstName: '',
     lastName: '',
     email: '',
     password: '',
+    phoneNumber:'',
     confirm_password: '',
 }
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
 const SignupSchema = Yup.object().shape({
     firstName: Yup.string()
@@ -26,6 +34,7 @@ const SignupSchema = Yup.object().shape({
         .max(50, 'Too Long!')
         .required('Required'),
     email: Yup.string().email('must be a valid email').required('Required'),
+    phoneNumber: Yup.string().matches(phoneRegExp, 'Phone number is not valid'),
     password: Yup.string().required('Password is required').min(8, 'Your password is too short.'),
     confirm_password: Yup.string()
         .oneOf([Yup.ref('password')], 'Passwords must match')
@@ -37,43 +46,69 @@ const Signup = ({ navigation }: { navigation: any }) => {
     const [secureTextEntry, setSecureTextEntry] = useState(true);
     const eyeIconType: string = secureTextEntry ? "eye" : "eye-off"
 
+
+    const {mutate,isLoading} = useMutation(createAccount, {
+        onSuccess: (response: any) => {
+            console.log(response)
+            new Alert().success(response?.data?.data?.message); 
+            //TODO: add token to state
+            //TODO: add user to state
+            //TODO: add create the email verification page
+            navigation.navigate("application")
+        },
+        onError: (error: any) => {
+            console.log(error.response?.data)
+            new Alert().error(error?.response?.data?.message); 
+        }
+    })
+
     return (
         <ScrollView style={{ backgroundColor: Colors.bg }}>
             <View style={{ flex: 1, marginTop: Spacing.SPACE_40, paddingHorizontal: Spacing.SPACE_30, paddingVertical: Spacing.SPACE_30 }}>
                 <Text style={{ fontSize: Spacing.SPACE_24, color: Colors.lightDark, marginBottom: Spacing.SPACE_6 }}>Create Account</Text>
                 <Caption style={{ color: Colors.gray, fontSize: Spacing.SPACE_12 }}>Create an account to continue to an awesome and wonderful experience.</Caption>
+                {
+                    isLoading ? <LoadingModal/> : null
+                }
                 <Formik
                     initialValues={initialValues}
                     onSubmit={values => {
                         console.log(values)
-                        navigation.navigate("application")
+                        mutate(values)
                     }}
-                    // validationSchema={SignupSchema}
+                    validationSchema={SignupSchema}
                 >
                     {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
                         <View style={{ marginTop: Spacing.SPACE_20 }}>
-                            <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14 }}>First Name</Title>
+                            <Caption style={{ color: Colors.lightDark }}>First Name</Caption>
                             <CustomTextInput placeholder={'FirstName '} onChangeText={handleChange('firstName')}
                                 onBlur={handleBlur('firstName')}
                                 value={values.firstName} />
                             {errors.firstName && touched.firstName ? (
-                                <Title style={{ color: Colors.shadePink6, fontSize: Spacing.SPACE_14 }}>{errors.firstName}</Title>
+                                <Caption style={{ color: Colors.shadePink6}}>{errors.firstName}</Caption>
                             ) : null}
-                            <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14 }}>Last Name</Title>
+                            <Caption style={{ color: Colors.lightDark }}>Last Name</Caption>
                             <CustomTextInput placeholder={' LastName'} onChangeText={handleChange('lastName')}
                                 onBlur={handleBlur('lastName')}
                                 value={values.lastName} />
                             {errors.lastName && touched.lastName ? (
-                                <Title style={{ color: Colors.shadePink6, fontSize: Spacing.SPACE_14 }}>{errors.lastName}</Title>
+                                <Caption style={{ color: Colors.shadePink6}}>{errors.lastName}</Caption>
                             ) : null}
-                            <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14 }}>Email Address</Title>
+                            <Caption style={{ color: Colors.lightDark }}>Email Address</Caption>
                             <CustomTextInput placeholder={'manyman@inshorens.com'} onChangeText={handleChange('email')}
                                 onBlur={handleBlur('email')}
                                 value={values.email} />
                             {errors.email && touched.email ? (
-                                <Title style={{ color: Colors.shadePink6, fontSize: Spacing.SPACE_14 }}>{errors.email}</Title>
+                                <Caption style={{ color: Colors.shadePink6}}>{errors.email}</Caption>
                             ) : null}
-                            <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14 }}>Password</Title>
+                            <Caption style={{ color: Colors.lightDark }}>Phone Number</Caption>
+                            <CustomTextInput placeholder={'2348012345678'} onChangeText={handleChange('phoneNumber')}
+                                onBlur={handleBlur('phoneNumber')}
+                                value={values.phoneNumber} />
+                            {errors.phoneNumber && touched.phoneNumber ? (
+                                <Caption style={{ color: Colors.shadePink6}}>{errors.phoneNumber}</Caption>
+                            ) : null}
+                            <Caption style={{ color: Colors.lightDark }}>Password</Caption>
                             <CustomTextInput placeholder={'long password you can remember'}
                                 onChangeText={handleChange('password')}
                                 onBlur={handleBlur('password')}
@@ -81,7 +116,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
                                 secureTextEntry={secureTextEntry} left={
                                     <TextInput.Icon
                                         icon={eyeIconType}
-                                        style={{ justifyContent: "center", alignItems: "center", height: 30 }}
+                                        iconColor={Colors?.gray}
                                         onPress={() => {
                                             setSecureTextEntry(!secureTextEntry);
                                             return false;
@@ -91,16 +126,16 @@ const Signup = ({ navigation }: { navigation: any }) => {
                                 }
                             />
                             {errors.password && touched.password ? (
-                                <Title style={{ color: Colors.shadePink6, fontSize: Spacing.SPACE_14 }}>{errors.password}</Title>
+                                <Caption style={{ color: Colors.shadePink6 }}>{errors.password}</Caption>
                             ) : null}
-                            <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14 }}>Confirm Password</Title>
+                            <Caption style={{ color: Colors.lightDark }}>Confirm Password</Caption>
                             <CustomTextInput placeholder={'long password you can remember'}
                                 onChangeText={handleChange('confirm_password')}
                                 onBlur={handleBlur('confirm_password')}
                                 value={values.confirm_password} secureTextEntry={secureTextEntry} left={
                                     <TextInput.Icon
                                         icon={eyeIconType}
-                                        style={{ justifyContent: "center", alignItems: "center", height: 30 }}
+                                        iconColor={Colors?.gray}
                                         onPress={() => {
                                             setSecureTextEntry(!secureTextEntry);
                                             return false;
@@ -110,9 +145,9 @@ const Signup = ({ navigation }: { navigation: any }) => {
                                 }
                             />
                             {errors.confirm_password && touched.confirm_password ? (
-                                <Title style={{ color: Colors.shadePink6, fontSize: Spacing.SPACE_14 }}>{errors.confirm_password}</Title>
+                                <Caption style={{ color: Colors.shadePink6 }}>{errors.confirm_password}</Caption>
                             ) : null}
-                            <Button onPress={handleSubmit} title="Sign Up" my={10} />
+                            <Button onPress={handleSubmit} title={`${isLoading ? 'loading' :'Sign Up'}`} my={10}  />
                             <TouchableRipple onPress={() => navigation.navigate("login")} >
                                 <Title style={{ color: Colors.baseColor, fontSize: Spacing.SPACE_14 }}>Already Have An Account? Sign In</Title>
                             </TouchableRipple>

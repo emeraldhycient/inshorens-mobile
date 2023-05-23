@@ -7,6 +7,10 @@ import CustomTextInput from '../../components/common/input/CustomTextInput'
 import Button from '../../components/common/button/Button'
 import { Formik } from 'formik';
 import * as Yup from "yup";
+import { login } from '../../services/backend/auth.service'
+import { useMutation } from 'react-query'
+import { Alert } from '../../helpers/alert'
+import LoadingModal from '../../components/common/LoadingModal'
 
 const initialValues = {
   email: '',
@@ -26,16 +30,33 @@ const Login = ({ navigation }: { navigation: any }) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const eyeIconType: string = secureTextEntry ? "eye" : "eye-off"
 
+  const { mutate, isLoading } = useMutation(login, {
+    onSuccess: (response: any) => {
+      console.log(response)
+      new Alert().success(response?.data?.data?.message);
+      //TODO: add token to state
+      //TODO: add user to state
+      //TODO: add create the email verification page
+      navigation.navigate("application")
+    },
+    onError: (error: any) => {
+      console.log(error.response?.data)
+      new Alert().error(error?.response?.data?.message);
+    }
+  })
+
   return (
     <ScrollView style={{backgroundColor:Colors.bg}}>
       <View style={{ flex: 1, marginTop: Spacing.SPACE_40, paddingHorizontal: Spacing.SPACE_30, paddingVertical: Spacing.SPACE_30 }}>
         <Text style={{ fontSize: Spacing.SPACE_24, color: Colors.lightDark, marginBottom: Spacing.SPACE_6 }}>Sign In</Text>
         <Caption style={{ color: Colors.gray, fontSize: Spacing.SPACE_12 }}>Sign in to continue to an awesome experience.</Caption>
+        {
+          isLoading ? <LoadingModal /> : null
+        }
         <Formik
           initialValues={initialValues}
           onSubmit={values => {
-            console.log(values)
-            navigation.navigate("application")
+            mutate(values)
           }}
         // validationSchema={SigninSchema}
         >
@@ -76,7 +97,7 @@ const Login = ({ navigation }: { navigation: any }) => {
               {errors.password && touched.password ? (
                 <Title style={{ color: Colors.shadePink6, fontSize: Spacing.SPACE_14 }}>{errors.password}</Title>
               ) : null}
-              <Button onPress={handleSubmit} title="Sign In" my={10} />
+              <Button onPress={handleSubmit} title={`${isLoading ? 'loading' : 'Sign In'}`} my={10} />
               <TouchableRipple onPress={() => navigation.navigate("signup")} >
                 <Title style={{ color: Colors.baseColor, fontSize: Spacing.SPACE_14 }}>Don’t Have An Account? Sign Up</Title>
               </TouchableRipple>

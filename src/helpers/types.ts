@@ -1,3 +1,4 @@
+import { string } from "yup";
 
 // react native props type
 export type TButtonProps = {
@@ -53,4 +54,6 @@ export type TprofileTilesProps = {
     url: string
 }
 
+export type TcreateAccount = { email : string, phoneNumber : string, firstName : string, lastName : string, password : string }
+export type Tlogin = { email : string,password : string }
 
