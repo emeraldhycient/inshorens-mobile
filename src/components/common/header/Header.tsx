@@ -7,6 +7,7 @@ import RBSheet from "react-native-raw-bottom-sheet";
 import { Caption, Title, TouchableRipple } from 'react-native-paper'
 import scan from "../../../../assets/icons/dashboard/qr.png"
 import { useNavigation } from '@react-navigation/native';
+import useAuthenticationState from '../../../states/authentication';
 
 const Header = ({
     title,
@@ -22,6 +23,9 @@ const Header = ({
     const refRBSheet = useRef();
 
     const navigation = useNavigation()
+
+    const user = useAuthenticationState((state: any) => state.authentication.user)
+
 
     return (
         <SafeAreaView>
@@ -47,7 +51,7 @@ const Header = ({
                             :
                             <Image source={{ uri: "https://i.im.ge/2023/03/27/IuHKsq.AVATAR.png" }} style={{ width: 40, height: 40, borderRadius: 20, borderWidth: 2, borderColor: Colors.white }} />
                     }
-                    <Title style={{ fontWeight: '500', color: hasBg ? titleColor : Colors.white, marginLeft: title ? 100 : 10 }}>{title ?? "Hi, Dominic 👋"}</Title>
+                    <Title style={{ fontWeight: '500', color: hasBg ? titleColor : Colors.white, marginLeft: title ? 100 : 10 }}>{title ?? `Hi, ${user?.firstName} 👋`}</Title>
                 </View>
                 {
                     !hideScanner &&
