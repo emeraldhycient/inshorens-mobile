@@ -51,14 +51,10 @@ const Signup = ({ navigation }: { navigation: any }) => {
         onSuccess: (response: any) => {
             console.log(response.data)
             new Alert().success(response?.data?.data?.message); 
-            //TODO: add token to state
-            //TODO: add user to state
-            //TODO: add create the email verification page
-            navigation.navigate("application")
+            navigation.navigate("login")
         },
         onError: (error: any) => {
-            console.log(error.response)
-            new Alert().error(error?.response?.data?.message || "An error occured,please check your internet connection");
+            new Alert().error(error?.response?.data?.message || error?.response?.statusText || "An error occured,please check your internet connection");
         }
     })
 

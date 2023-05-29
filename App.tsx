@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { ErrorBoundary } from 'react-error-boundary'
-import Main from './src/router/main';
 import FlashMessage from "react-native-flash-message";
 import {
   QueryClient,

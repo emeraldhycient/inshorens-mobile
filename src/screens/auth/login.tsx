@@ -35,25 +35,8 @@ const Login = ({ navigation }: { navigation: any }) => {
   const setUser = useAuthenticationState((state: any) => state.setUser);
   const setToken = useAuthenticationState((state: any) => state.setToken);
 
-
-  // const { mutate, isLoading } = useMutation(login, {
-  //   onSuccess: async (response:any) => {
-  //     console.log("login success", response)
-  //     new Alert().success(response?.data?.message || "Login Successful");
-  //     //TODO: add token to state
-  //     //TODO: add user to state
-  //     //TODO: add create the email verification page
-  //     navigation.navigate("application")
-  //   },
-  //   onError: async (error: any) => {
-  //     console.log("login", error.response)
-  //     new Alert().error(error?.response?.data?.message || "An error occured,please check your internet connection");
-  //   }
-  // })
-
   const { mutate, isLoading } = useMutation(login, {
     onSuccess: async (response) => {
-      console.log("login success", response.data.user)
       if (response?.data?.user?.emailVerified === false) {
         new Alert().error("Please verify your email address to continue");
         return
@@ -64,7 +47,6 @@ const Login = ({ navigation }: { navigation: any }) => {
       new Alert().success(response?.data?.message || "Login Successful");
     },
     onError: (error: any) => {
-      console.log("login error", error?.response)
       new Alert().error(error?.response?.data?.message || error?.response?.statusText || "An error occured,please check your internet connection");
     }
   });
