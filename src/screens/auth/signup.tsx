@@ -49,8 +49,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
 
     const {mutate,isLoading} = useMutation(createAccount, {
         onSuccess: (response: any) => {
-            console.log(response.data)
-            new Alert().success(response?.data?.data?.message); 
+            new Alert().success("Account created successfully,please verify your email to continue"); 
             navigation.navigate("login")
         },
         onError: (error: any) => {

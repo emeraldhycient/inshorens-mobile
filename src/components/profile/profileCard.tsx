@@ -6,21 +6,23 @@ import { Image } from 'react-native';
 import RBSheet from "react-native-raw-bottom-sheet";
 import EvilIcons from "react-native-vector-icons/EvilIcons"
 import scan from "../../../assets/icons/dashboard/qr.png"
+import useAuthenticationState from '../../states/authentication';
 
 function ProfileCard() {
     const { height } = useWindowDimensions()
     const refRBSheet = useRef();
 
+    const user = useAuthenticationState((state: any) => state.authentication.user)
 
     return (
       <>
       <View style={{ backgroundColor: Colors.white, height: 75, width: "100%", borderRadius: 50, borderWidth: 1.4, borderColor: Colors.lightGray, padding: 16, justifyContent: "space-between", flexDirection: "row", alignItems: "center" }}>
           <View style={{ backgroundColor: "#010067", height: 40, width: 40, borderRadius: 50, alignItems: "center", justifyContent: "center" }}>
-              <Image source={{ uri: 'https://i.im.ge/2023/04/06/Ig2k7x.NAME.png' }} style={{ height: 25, width: 25, borderRadius: 50 }} resizeMode='contain' />
+                    <Image source={{ uri: user?.profileImage ?? 'https://i.im.ge/2023/04/06/Ig2k7x.NAME.png' }} style={{ height: 25, width: 25, borderRadius: 50 }} resizeMode='contain' />
           </View>
           <View style={{ flexDirection: "column", justifyContent: "center", width: "50%" }}>
-              <Caption style={{ color: Colors.lightDark }}>hello@praisedominic.xyz</Caption>
-              <Title style={{ color: Colors.lightDark }}>Dominic Praise</Title>
+                    <Caption style={{ color: Colors.lightDark }}>{user?.email ?? "hey man you are supposed to be logged in"}</Caption>
+                    <Title style={{ color: Colors.lightDark }}>{ user?.firstName ? `${user?.firstName} ${user?.lastName}` : "Why not logged in ?"}</Title>
           </View>
           <TouchableRipple onPress={() => refRBSheet?.current?.open()}>
                     <Image source={{ uri:'https://i.im.ge/2023/04/06/IgdTRT.BELL.png'}} style={{ width: 40, height: 40 }} />
