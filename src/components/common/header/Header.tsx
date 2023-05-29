@@ -49,7 +49,7 @@ const Header = ({
                                 <EvilIcons name="arrow-left" size={30} color={titleColor ? titleColor : Colors.white} />
                             </TouchableRipple>
                             :
-                            <Image source={{ uri: "https://i.im.ge/2023/03/27/IuHKsq.AVATAR.png" }} style={{ width: 40, height: 40, borderRadius: 20, borderWidth: 2, borderColor: Colors.white }} />
+                            <Image source={{ uri: user?.profileImage ?? "https://i.im.ge/2023/03/27/IuHKsq.AVATAR.png" }} style={{ width: 40, height: 40, borderRadius: 20, borderWidth: 2, borderColor: Colors.white }} />
                     }
                     <Title style={{ fontWeight: '500', color: hasBg ? titleColor : Colors.white, marginLeft: title ? 100 : 10 }}>{title ?? `Hi, ${user?.firstName} 👋`}</Title>
                 </View>
