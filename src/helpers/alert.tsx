@@ -8,7 +8,7 @@ export class Alert {
       message: message,
       type: "success",
       backgroundColor: "#589C5F",
-      titleStyle: { fontFamily: "Gilroy-Regular" },
+      // titleStyle: { fontFamily: "Gilroy-Regular" },
       duration: 5000,
       renderCustomContent: () => (
         <Button
@@ -32,7 +32,7 @@ export class Alert {
       message: message,
       type: "danger",
       backgroundColor: "#FB3F4A",
-      titleStyle: { fontFamily: "Gilroy-Regular" },
+      // titleStyle: { fontFamily: "Gilroy-Regular" },
       duration: 5000,
       renderCustomContent: () => (
         <Button
