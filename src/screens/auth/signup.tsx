@@ -49,7 +49,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
 
     const {mutate,isLoading} = useMutation(createAccount, {
         onSuccess: (response: any) => {
-            console.log(response)
+            console.log(response.data)
             new Alert().success(response?.data?.data?.message); 
             //TODO: add token to state
             //TODO: add user to state
@@ -57,7 +57,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
             navigation.navigate("application")
         },
         onError: (error: any) => {
-            console.log(error.response?.data)
+            console.log(error.response)
             new Alert().error(error?.response?.data?.message || "An error occured,please check your internet connection");
         }
     })
@@ -73,7 +73,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
                 <Formik
                     initialValues={initialValues}
                     onSubmit={values => {
-                        console.log(values)
+                        // console.log(values)
                         mutate(values)
                     }}
                     validationSchema={SignupSchema}

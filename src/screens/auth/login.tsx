@@ -11,6 +11,7 @@ import { login } from '../../services/backend/auth.service'
 import { useMutation } from 'react-query'
 import { Alert } from '../../helpers/alert'
 import LoadingModal from '../../components/common/LoadingModal'
+import useAuthenticationState from '../../states/authentication'
 
 const initialValues = {
   email: '',
@@ -30,23 +31,46 @@ const Login = ({ navigation }: { navigation: any }) => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const eyeIconType: string = secureTextEntry ? "eye" : "eye-off"
 
+  const setIsAuthenticated = useAuthenticationState((state: any) => state.setIsAuthenticated);
+  const setUser = useAuthenticationState((state: any) => state.setUser);
+  const setToken = useAuthenticationState((state: any) => state.setToken);
+
+
+  // const { mutate, isLoading } = useMutation(login, {
+  //   onSuccess: async (response:any) => {
+  //     console.log("login success", response)
+  //     new Alert().success(response?.data?.message || "Login Successful");
+  //     //TODO: add token to state
+  //     //TODO: add user to state
+  //     //TODO: add create the email verification page
+  //     navigation.navigate("application")
+  //   },
+  //   onError: async (error: any) => {
+  //     console.log("login", error.response)
+  //     new Alert().error(error?.response?.data?.message || "An error occured,please check your internet connection");
+  //   }
+  // })
+
   const { mutate, isLoading } = useMutation(login, {
-    onSuccess: (response: any) => {
-      console.log(response)
-      new Alert().success(response?.data?.data?.message);
-      //TODO: add token to state
-      //TODO: add user to state
-      //TODO: add create the email verification page
-      navigation.navigate("application")
+    onSuccess: async (response) => {
+      console.log("login success", response.data.user)
+      if (response?.data?.user?.emailVerified === false) {
+        new Alert().error("Please verify your email address to continue");
+        return
+      }
+      setToken(response?.data?.accessToken)
+      setIsAuthenticated(true)
+      setUser(response?.data?.user)
+      new Alert().success(response?.data?.message || "Login Successful");
     },
     onError: (error: any) => {
-      console.log(error.response?.data)
-      new Alert().error(error?.response?.data?.message || "An error occured,please check your internet connection");
+      console.log("login error", error?.response)
+      new Alert().error(error?.response?.data?.message || error?.response?.statusText || "An error occured,please check your internet connection");
     }
-  })
+  });
 
   return (
-    <ScrollView style={{backgroundColor:Colors.bg}}>
+    <ScrollView style={{ backgroundColor: Colors.bg }}>
       <View style={{ flex: 1, marginTop: Spacing.SPACE_40, paddingHorizontal: Spacing.SPACE_30, paddingVertical: Spacing.SPACE_30 }}>
         <Text style={{ fontSize: Spacing.SPACE_24, color: Colors.lightDark, marginBottom: Spacing.SPACE_6 }}>Sign In</Text>
         <Caption style={{ color: Colors.gray, fontSize: Spacing.SPACE_12 }}>Sign in to continue to an awesome experience.</Caption>

@@ -9,6 +9,10 @@ import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query'
+import { useEffect, useState } from 'react';
+import useAuthenticationState from './src/states/authentication';
+import Auth from './src/router/auth';
+import Application from './src/router/application';
 
 
 
@@ -25,24 +29,60 @@ export default function App() {
 
   const queryClient = new QueryClient()
 
-  return (
-    <ErrorBoundary
-      FallbackComponent={ErrorFallback}
-      onReset={() => {
-        // reset the state of your app so the error doesn't happen again
-      }}
-    >
-      <PaperProvider theme={theme}>
-        <NavigationContainer>
-          <StatusBar style="auto" />
-          <QueryClientProvider client={queryClient}>
-            < Main />
-            <FlashMessage position="top" /> 
-          </QueryClientProvider>
-        </NavigationContainer>
-      </PaperProvider>
-    </ErrorBoundary>
-  );
+  const isAuthenticated = useAuthenticationState((state:any) => state.authentication.isAuthenticated);
+
+  const [islogged, setIslogged] = useState(false)
+
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setIslogged(true)
+    } else {
+      setIslogged(false)
+    }
+  }, [isAuthenticated])
+
+  if (!islogged) {
+    return (
+      <ErrorBoundary
+        FallbackComponent={ErrorFallback}
+        onReset={() => {
+          // reset the state of your app so the error doesn't happen again
+        }}
+      >
+        <PaperProvider theme={theme}>
+          <NavigationContainer>
+            <StatusBar style="auto" />
+            <QueryClientProvider client={queryClient}>
+              < Auth />
+              <FlashMessage position="top" />
+            </QueryClientProvider>
+          </NavigationContainer>
+        </PaperProvider>
+      </ErrorBoundary>
+    );
+  }
+
+  if (islogged) {
+    return (
+      <ErrorBoundary
+        FallbackComponent={ErrorFallback}
+        onReset={() => {
+          // reset the state of your app so the error doesn't happen again
+        }}
+      >
+        <PaperProvider theme={theme}>
+          <NavigationContainer>
+            <StatusBar style="auto" />
+            <QueryClientProvider client={queryClient}>
+              < Application />
+              <FlashMessage position="top" />
+            </QueryClientProvider>
+          </NavigationContainer>
+        </PaperProvider>
+      </ErrorBoundary>
+    );
+  }
 }
 
 const theme = {

@@ -18,12 +18,7 @@ const Main = () => {
             <Screen name="application" component={BottomTab} options={{
                 headerShown: false,
             }} />
-            <Screen name="startClaim" component={StartClaim} options={{
-                headerShown: false,
-            }} />
-            <Screen name="planDetails" component={PlanDetails} options={{
-                headerShown: false,
-            }} />
+
         </Navigator>
     );
 }
