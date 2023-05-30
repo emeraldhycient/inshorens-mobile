@@ -5,6 +5,7 @@ import Claims from '../screens/claims/claims';
 import Home from '../screens/dashboard/Home';
 import Colors from '../themes/Colors';
 import Profile from '../screens/profile&settings/profile';
+import Expense from '../screens/expenses/expenses';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -24,6 +25,12 @@ function BottomTab() {
             }} />
             <Tab.Screen name="claim" component={Claims} options={{
                 tabBarLabel: 'claims',
+                tabBarIcon: ({ color }) => (
+                    <Image source={require("../../assets/icons/bottomtab/claim.png")} style={styles.icon} />
+                ),
+            }} />
+            <Tab.Screen name="expenses" component={Expense} options={{
+                tabBarLabel: 'expense',
                 tabBarIcon: ({ color }) => (
                     <Image source={require("../../assets/icons/bottomtab/claim.png")} style={styles.icon} />
                 ),

@@ -57,7 +57,7 @@ export default function App() {
       >
         <PaperProvider theme={theme}>
           <NavigationContainer>
-            <StatusBar style="auto" />
+            <StatusBar style="dark" />
             <QueryClientProvider client={queryClient}>
               < Auth />
               <FlashMessage position="top" />
