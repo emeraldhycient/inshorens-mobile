@@ -12,6 +12,7 @@ import { useMutation } from 'react-query'
 import { Alert } from '../../helpers/alert'
 import LoadingModal from '../../components/common/LoadingModal'
 import useAuthenticationState from '../../states/authentication'
+import Header from '../../components/common/header/Header'
 
 const initialValues = {
   email: '',
@@ -53,9 +54,9 @@ const Login = ({ navigation }: { navigation: any }) => {
 
   return (
     <ScrollView style={{ backgroundColor: Colors.bg }}>
-      <View style={{ flex: 1, marginTop: Spacing.SPACE_40, paddingHorizontal: Spacing.SPACE_30, paddingVertical: Spacing.SPACE_30 }}>
-        <Text style={{ fontSize: Spacing.SPACE_24, color: Colors.lightDark, marginBottom: Spacing.SPACE_6 }}>Sign In</Text>
-        <Caption style={{ color: Colors.gray, fontSize: Spacing.SPACE_12 }}>Sign in to continue to an awesome experience.</Caption>
+      <Header showBack={true} title="Sign In" titleColor={Colors.black} bgColor={"transparent"} hasBg={true} />
+      <View style={{ flex: 1, paddingHorizontal: Spacing.SPACE_30, paddingBottom: Spacing.SPACE_30 }}>
+        <Caption style={{ color: Colors.gray, fontSize: 13, fontFamily: 'MabryPro' }}>Sign in to continue to an awesome experience.</Caption>
         {
           isLoading ? <LoadingModal /> : null
         }
@@ -68,19 +69,19 @@ const Login = ({ navigation }: { navigation: any }) => {
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
             <View style={{ marginTop: Spacing.SPACE_20 }}>
-              <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14 }}>Email Address</Title>
+              <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>Email Address</Title>
               <CustomTextInput onChangeText={handleChange('email')}
                 onBlur={handleBlur('email')}
                 value={values.email}
                 placeholder={'manyman@inshorens.com'}
               />
               {errors.email && touched.email ? (
-                <Title style={{ color: Colors.shadePink6, fontSize: Spacing.SPACE_14 }}>{errors.email}</Title>
+                <Title style={{ color: Colors.shadePink6, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>{errors.email}</Title>
               ) : null}
               <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14 }}>Password</Title>
+                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>Password</Title>
                 <TouchableRipple onPress={() => navigation.navigate("resetpassword")} >
-                  <Title style={{ color: Colors.shadePink6, fontSize: Spacing.SPACE_14 }}>Forgot Password</Title>
+                  <Title style={{ color: Colors.shadePink6, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>Forgot Password</Title>
                 </TouchableRipple>
               </View>
               <CustomTextInput placeholder={'long password you can remember'}
@@ -101,11 +102,11 @@ const Login = ({ navigation }: { navigation: any }) => {
                 }
               />
               {errors.password && touched.password ? (
-                <Title style={{ color: Colors.shadePink6, fontSize: Spacing.SPACE_14 }}>{errors.password}</Title>
+                <Title style={{ color: Colors.shadePink6, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>{errors.password}</Title>
               ) : null}
               <Button onPress={handleSubmit} title={`${isLoading ? 'loading' : 'Sign In'}`} my={10} />
               <TouchableRipple onPress={() => navigation.navigate("signup")} >
-                <Title style={{ color: Colors.baseColor, fontSize: Spacing.SPACE_14 }}>Don’t Have An Account? Sign Up</Title>
+                <Title style={{ color: Colors.baseColor, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>Don’t Have An Account? Sign Up</Title>
               </TouchableRipple>
             </View>
           )}

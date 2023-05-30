@@ -1,4 +1,4 @@
-import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { Image, SafeAreaView, StyleSheet, Platform, View } from 'react-native'
 import React, { useRef } from "react";
 import { TcustomHeaderProps } from '../../../helpers/types'
 import Colors from '../../../themes/Colors'
@@ -31,8 +31,8 @@ const Header = ({
         <SafeAreaView>
             <View
                 style={theme ?? {
-                    height: 100,
-                    paddingTop: 25,
+                    height: Platform.OS === 'ios' ? 70 : 100,
+                    paddingVertical: 15,
                     paddingHorizontal: 10,
                     backgroundColor: hasBg ? bgColor : 'transparent',
                     width: "100%",
@@ -51,7 +51,7 @@ const Header = ({
                             :
                             <Image source={{ uri: user?.profileImage ?? "https://i.im.ge/2023/03/27/IuHKsq.AVATAR.png" }} style={{ width: 40, height: 40, borderRadius: 20, borderWidth: 2, borderColor: Colors.white }} />
                     }
-                    <Title style={{ fontWeight: '500', color: hasBg ? titleColor : Colors.white, marginLeft: title ? 100 : 10 }}>{title ?? `Hi, ${user?.firstName} 👋`}</Title>
+                    <Title style={{ fontWeight: '500', fontFamily: 'MabryPro', color: hasBg ? titleColor : Colors.white, marginLeft: title ? 100 : 10 }}>{title ?? `Hi, ${user?.firstName} 👋`}</Title>
                 </View>
                 {
                     !hideScanner &&

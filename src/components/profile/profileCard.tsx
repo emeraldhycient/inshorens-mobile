@@ -21,8 +21,8 @@ function ProfileCard() {
                     <Image source={{ uri: user?.profileImage ?? 'https://i.im.ge/2023/04/06/Ig2k7x.NAME.png' }} style={{ height: 25, width: 25, borderRadius: 50 }} resizeMode='contain' />
           </View>
           <View style={{ flexDirection: "column", justifyContent: "center", width: "50%" }}>
-                    <Caption style={{ color: Colors.lightDark }}>{user?.email ?? "hey man you are supposed to be logged in"}</Caption>
-                    <Title style={{ color: Colors.lightDark }}>{ user?.firstName ? `${user?.firstName} ${user?.lastName}` : "Why not logged in ?"}</Title>
+                    <Caption style={{ color: Colors.lightDark, fontFamily: 'MabryPro' }}>{user?.email ?? "hey man you are supposed to be logged in"}</Caption>
+                    <Title style={{ color: Colors.lightDark, fontFamily: 'MabryPro' }}>{ user?.firstName ? `${user?.firstName} ${user?.lastName}` : "Why not logged in ?"}</Title>
           </View>
           <TouchableRipple onPress={() => refRBSheet?.current?.open()}>
                     <Image source={{ uri:'https://i.im.ge/2023/04/06/IgdTRT.BELL.png'}} style={{ width: 40, height: 40 }} />
@@ -50,10 +50,10 @@ function ProfileCard() {
                         <TouchableRipple onPress={() => refRBSheet?.current?.close()}>
                             <EvilIcons name="arrow-left" size={30} color={Colors.black} />
                         </TouchableRipple>
-                        <Title style={{ fontWeight: '500', color: Colors.lightDark, marginLeft: 10 }}>Scan QR Code</Title>
+                        <Title style={{ fontWeight: '500', color: Colors.lightDark, marginLeft: 10, fontFamily: 'MabryPro' }}>Scan QR Code</Title>
                         <View></View>
                     </View>
-                    <Caption style={{ textAlign: "center" }}>Scan the QR Code to checkout for available policies.</Caption>
+                    <Caption style={{ textAlign: "center", fontFamily: 'MabryPro' }}>Scan the QR Code to checkout for available policies.</Caption>
                     <View style={{ width: "100%", height: "80%", alignItems: "center", justifyContent: "center" }}>
                         <Image source={{ uri: "https://i.im.ge/2023/03/27/IFlYQc.Qrcode.png" }} style={{ width: 200, height: 200 }} />
                     </View>

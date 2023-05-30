@@ -20,18 +20,18 @@ const PlanCard = ({ data, url }: any) => {
         <View style={[{ backgroundColor: Colors.baseColor, height: 150, width: width - 60, borderRadius: 16, marginHorizontal: 6, padding: 16,justifyContent:"space-between" }, styles.shadow]}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View>
-                    <Caption style={{ color: Colors.white }}>Plan Price</Caption>
-                    <Caption style={{ color: Colors.white }}>*********</Caption>
+                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>Plan Price</Caption>
+                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>*********</Caption>
                 </View>
                 <View>
-                    <Caption style={{ color: Colors.white }}>Status</Caption>
-                    <Caption style={{ color: Colors.white }}>*********</Caption>
+                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>Status</Caption>
+                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>*********</Caption>
                 </View>
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View>
-                    <Caption style={{ color: Colors.white }}>Plan Name</Caption>
-                    <Caption style={{ color: Colors.white }}>*********</Caption>
+                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>Plan Name</Caption>
+                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>*********</Caption>
                 </View>
                 <Button onPress={() => url ? navigation.navigate(url as never, data as never) : refRBSheet?.current?.open()}
                     title="Create a Plan"
@@ -61,7 +61,7 @@ const PlanCard = ({ data, url }: any) => {
                         <TouchableRipple onPress={() => refRBSheet?.current?.close()}>
                             <EvilIcons name="arrow-left" size={30} color={Colors.black} />
                         </TouchableRipple>
-                        <Title style={{ fontWeight: '500', color: Colors.lightDark, marginLeft: 10 }}>iPhone 14 Pro Max</Title>
+                        <Title style={{ fontWeight: '500', color: Colors.lightDark, marginLeft: 10, fontFamily: 'MabryPro' }}>iPhone 14 Pro Max</Title>
                         <View></View>
                     </View>
                    

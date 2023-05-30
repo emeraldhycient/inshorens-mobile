@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         color: Colors.black,
         marginTop: 10,
         marginBottom: 10,
+        fontFamily: 'MabryPro'
     }
 
 })

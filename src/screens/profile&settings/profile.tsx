@@ -49,7 +49,7 @@ const Profile = ({ navigation }: any) => {
             <ScrollView style={{ paddingHorizontal: 14 }}>
                 <ProfileCard />
                 <View style={{ marginTop: 20, paddingHorizontal: 5 }}>
-                    <Title style={{ marginBottom: 10, fontSize: 16 }}>Account</Title>
+                    <Title style={{ marginBottom: 10, fontSize: 16, fontFamily: 'MabryPro' }}>Account</Title>
                     <Tiles title='Account Information' icon={require('../../../assets/icons/profile/user.png')} url='' />
                     <Tiles title='KYC Information' icon={require('../../../assets/icons/profile/privacy.png')} url='' />
                     <Tiles title='Terms of Service' icon={require('../../../assets/icons/profile/terms.png')} url='' />

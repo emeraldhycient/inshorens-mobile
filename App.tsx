@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import useAuthenticationState from './src/states/authentication';
 import Auth from './src/router/auth';
 import Application from './src/router/application';
+import { useFonts } from 'expo-font';
 
 
 
@@ -27,6 +28,11 @@ function ErrorFallback({ error }: { error: Error }) {
 export default function App() {
 
   const queryClient = new QueryClient()
+
+  const [fontsLoaded] = useFonts({
+    'MabryPro': require('./assets/fonts/Mabry_Pro/MabryPro-Regular.ttf'),
+  });
+
 
   const isAuthenticated = useAuthenticationState((state:any) => state.authentication.isAuthenticated);
 

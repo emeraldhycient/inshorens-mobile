@@ -29,7 +29,7 @@ const Home = ({navigation}:any) => {
                 <CustomTextInput placeholder={'Search for policy'} value={''} onChangeText={function (text: string): void { }} />
             </View>
             <View style={{ paddingHorizontal: 27, paddingBottom: 20 }}>
-                <Caption style={{ color: Colors.gray }}>Available Policies</Caption>
+                <Caption style={{ color: Colors.gray, fontFamily: 'MabryPro' }}>Available Policies</Caption>
             </View>
             <FlatList
                 style={{ paddingHorizontal: 14, }}

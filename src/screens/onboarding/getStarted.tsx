@@ -16,8 +16,8 @@ const GetStarted = ({navigation}:any) => {
                         <Image source={preview} resizeMode="contain" style={{ width: "100%", height: "80%", marginBottom: Spacing.SPACE_30, borderRadius: Spacing.SPACE_10 }} />
                     </View>
                     <View>
-                        <Text variant="headlineLarge" style={{ textAlign: 'center', marginBottom: Spacing.SPACE_6, fontWeight: "600", fontSize: 24,color:Colors.lightDark }}>Be Safe, Insured & Get Paid With Us.</Text>
-                        <Title style={{ textAlign: 'center', color: Colors.gray, marginBottom: Spacing.SPACE_10, fontSize: 18, fontWeight: "400" }}>Our insurance policies give you the peace of mind you need in your daily activities.</Title>
+                        <Text variant="headlineLarge" style={{ textAlign: 'center', marginBottom: Spacing.SPACE_6, fontWeight: "600", fontSize: 24, color: Colors.lightDark, fontFamily: 'MabryPro' }}>Be Safe, Insured & Get Paid With Us.</Text>
+                        <Title style={{ textAlign: 'center', color: Colors.gray, marginBottom: Spacing.SPACE_10, fontSize: 18, fontWeight: "400", fontFamily: 'MabryPro' }}>Our insurance policies give you the peace of mind you need in your daily activities.</Title>
                         <Button onPress={() => navigation.navigate("signup")} title="Create an Account" my={10} />
                         <Button onPress={() => navigation.navigate("login")} title="Login to your Account" outlined={true} color={Colors.baseColor} />
                     </View>
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.bg,
         alignItems: 'center',
         justifyContent: 'center',
+        fontFamily:'MabryPro'
     },
     container: {
         flex: 1,

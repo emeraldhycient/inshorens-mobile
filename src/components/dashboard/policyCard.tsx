@@ -16,10 +16,10 @@ const PolicyCard = ({ data, url }: any) => {
                 <Image source={{ uri:'https://i.im.ge/2023/04/06/Ig1bWF.fluent-phone-laptop-16-regular.png'}} style={{height:25,width:25,borderRadius:50}} />
             </View>
             <View style={{flexDirection:"column",justifyContent:"center",width:"50%"}}>
-                <Caption style={{ color: Colors.lightDark }}>Computers & PCs</Caption>
+                <Caption style={{ color: Colors.lightDark, fontFamily: 'MabryPro' }}>Computers & PCs</Caption>
             </View>
             <View style={{ backgroundColor: Colors.baseColor, height: 30, width: 100, borderRadius: 8,alignItems:"center",justifyContent:"center",flexDirection:"row" }}>
-                <Caption style={{ color: Colors.white }}>View Plans </Caption>
+                <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>View Plans </Caption>
                 <MaterialIcons name="keyboard-arrow-right" size={16} color={Colors.white} />
             </View>
         </View>

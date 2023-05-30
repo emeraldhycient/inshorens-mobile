@@ -7,6 +7,7 @@ import CustomTextInput from '../../components/common/input/CustomTextInput'
 import Button from '../../components/common/button/Button'
 import { Formik } from 'formik';
 import * as Yup from "yup";
+import Header from '../../components/common/header/Header'
 
 const ResetPassword = ({ navigation }: { navigation: any }) => {
     const [secureTextEntry, setSecureTextEntry] = useState(true);
@@ -16,14 +17,13 @@ const ResetPassword = ({ navigation }: { navigation: any }) => {
 
     return (
         <ScrollView style={{ backgroundColor: Colors.bg }}>
-            <View style={{ flex: 1, marginTop: Spacing.SPACE_40, paddingHorizontal: Spacing.SPACE_30, paddingVertical: Spacing.SPACE_30 }}>
-                <Text style={{ fontSize: Spacing.SPACE_24, color: Colors.lightDark, marginBottom: Spacing.SPACE_6 }}>{steps === 0 ? "Reset Password" : steps === 1 ? "Verify OTP" : "Update Password"}</Text> 
-                <Caption style={{ color: Colors.gray, fontSize: Spacing.SPACE_12 }}>{steps === 0 ? "Reset your account password here." : steps === 1 ? "Enter OTP sent to your mail" : "Update your password"}</Caption>
-
+            <Header showBack={true} title={steps === 0 ? "Reset Password" : steps === 1 ? "Verify OTP" : "Update Password"} titleColor={Colors.black} bgColor={"transparent"} hasBg={true} />
+            <View style={{ flex: 1,  paddingHorizontal: Spacing.SPACE_30, paddingBottom: Spacing.SPACE_30 }}>
+                <Caption style={{ color: Colors.gray, fontSize:13, fontFamily: 'MabryPro' }}>{steps === 0 ? "Reset your account password here." : steps === 1 ? "Enter OTP sent to your mail" : "Update your password"}</Caption>
                 <View style={{ marginTop: Spacing.SPACE_20 }}>
                     {
                         steps === 0 && <>
-                            <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14 }}>Email Address</Title>
+                            <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>Email Address</Title>
                             <CustomTextInput
                                 onChangeText={() => { }}
                                 value={""}
@@ -35,7 +35,7 @@ const ResetPassword = ({ navigation }: { navigation: any }) => {
                     {
                         steps === 1 && <>
                             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14 }}>Enter OTP</Title>
+                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>Enter OTP</Title>
                             </View>
                             <CustomTextInput placeholder={'Enter OTP sent to your mail'}
                                 onChangeText={() => { }}
@@ -59,7 +59,7 @@ const ResetPassword = ({ navigation }: { navigation: any }) => {
                     {
                         steps === 2 && <>
                             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14 }}>Password</Title>
+                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>Password</Title>
                             </View>
                             <CustomTextInput placeholder={'long password you can remember'}
                                 onChangeText={() => { }}
@@ -78,7 +78,7 @@ const ResetPassword = ({ navigation }: { navigation: any }) => {
                                 }
                             />
                             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14 }}>Confirm Password</Title>
+                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>Confirm Password</Title>
                             </View>
                             <CustomTextInput placeholder={'long password you can remember'}
                                 onChangeText={() => { }}
@@ -101,7 +101,7 @@ const ResetPassword = ({ navigation }: { navigation: any }) => {
                     }
 
                     <TouchableRipple onPress={() => navigation.navigate("login")} >
-                        <Title style={{ color: Colors.baseColor, fontSize: Spacing.SPACE_14 }}>Remember Password? Back to Login</Title>
+                        <Title style={{ color: Colors.baseColor, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>Remember Password? Back to Login</Title>
                     </TouchableRipple>
                 </View>
 

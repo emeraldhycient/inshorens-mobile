@@ -36,52 +36,52 @@ const PlanDetails = () => {
                 <Header showBack={true} title={"Laptop Insurance"} hasBg={true} hideScanner={true} titleColor={Colors.white} />
             </Hero>
             <View style={{ marginTop: 20, paddingHorizontal: 10 }}>
-                <Title style={{ color: Colors.gray, fontSize: 16 }}>Our pillow insurance plan offers comprehensive coverage for a variety of scenarios, including accidental damage, theft, loss, and more.</Title>
-                <Title>Coverage for Theft:</Title>
+                <Title style={{ color: Colors.gray, fontSize: 16, fontFamily: 'MabryPro' }}>Our pillow insurance plan offers comprehensive coverage for a variety of scenarios, including accidental damage, theft, loss, and more.</Title>
+                <Title style={{ fontFamily: 'MabryPro' }}>Coverage for Theft:</Title>
                 <List.Item
                     title="Flood Damage"
-                    titleStyle={{ fontSize: 14, color: Colors.gray }}
+                    titleStyle={{ fontSize: 14, color: Colors.gray, fontFamily: 'MabryPro' }}
                     left={props => <List.Icon {...props} icon="water" color={Colors.gray} />}
                 />
                 <List.Item
                     title="Towing Benefit "
-                    titleStyle={{ fontSize: 14, color: Colors.gray }}
+                    titleStyle={{ fontSize: 14, color: Colors.gray, fontFamily: 'MabryPro' }}
                     left={props => <List.Icon {...props} icon="car" color={Colors.gray} />}
                 />
                 <List.Item
                     title="Vehicle Tracker"
-                    titleStyle={{ fontSize: 14, color: Colors.gray }}
+                    titleStyle={{ fontSize: 14, color: Colors.gray, fontFamily: 'MabryPro' }}
                     left={props => <List.Icon {...props} icon="car" color={Colors.gray} />}
                 />
-                <Title>Options:</Title>
+                <Title style={{ fontFamily: 'MabryPro' }}>Options:</Title>
                 <List.Item
                     title="Flood Damage"
-                    titleStyle={{ fontSize: 14, color: Colors.gray }}
+                    titleStyle={{ fontSize: 14, color: Colors.gray, fontFamily: 'MabryPro' }}
                     left={props => <List.Icon {...props} icon="fire" color={Colors.gray} />}
                 />
                 <List.Item
                     title="Towing Benefit "
-                    titleStyle={{ fontSize: 14, color: Colors.gray }}
+                    titleStyle={{ fontSize: 14, color: Colors.gray, fontFamily: 'MabryPro' }}
                     left={props => <List.Icon {...props} icon="water" color={Colors.gray} />}
                 />
                 <List.Item
                     title="Vehicle Tracker"
-                    titleStyle={{ fontSize: 14, color: Colors.gray }}
+                    titleStyle={{ fontSize: 14, color: Colors.gray, fontFamily: 'MabryPro' }}
                     left={props => <List.Icon {...props} icon="car" color={Colors.gray} />}
                 />
                 <List.Item
                     title="Vehicle Tracker"
-                    titleStyle={{ fontSize: 14, color: Colors.gray }}
+                    titleStyle={{ fontSize: 14, color: Colors.gray, fontFamily: 'MabryPro' }}
                     left={props => <List.Icon {...props} icon="car" color={Colors.gray} />}
                 />
                 <List.Item
                     title="Vehicle Tracker"
-                    titleStyle={{ fontSize: 14, color: Colors.gray }}
+                    titleStyle={{ fontSize: 14, color: Colors.gray, fontFamily: 'MabryPro' }}
                     left={props => <List.Icon {...props} icon="car" color={Colors.gray} />}
                 />
                 <List.Item
                     title="Vehicle Tracker"
-                    titleStyle={{ fontSize: 14, color: Colors.gray }}
+                    titleStyle={{ fontSize: 14, color: Colors.gray, fontFamily: 'MabryPro' }}
                     left={props => <List.Icon {...props} icon="car" color={Colors.gray} />}
                 />
                 <View style={{marginHorizontal:20,marginVertical:50}}>
@@ -112,10 +112,10 @@ const PlanDetails = () => {
                         <TouchableRipple onPress={() => refRBSheet?.current?.close()}>
                             <EvilIcons name="arrow-left" size={30} color={Colors.black} />
                         </TouchableRipple>
-                        <Title style={{ fontWeight: '500', color: Colors.lightDark, marginLeft: 10 }}>Insure a Laptop</Title>
+                        <Title style={{ fontWeight: '500', color: Colors.lightDark, marginLeft: 10, fontFamily: 'MabryPro' }}>Insure a Laptop</Title>
                         <View></View>
                     </View>
-                    <Caption style={{ textAlign: "center", marginTop: 10 }}>Fill in the information below to start your PC insurance journey with us.</Caption>
+                    <Caption style={{ textAlign: "center", marginTop: 10, fontFamily: 'MabryPro' }}>Fill in the information below to start your PC insurance journey with us.</Caption>
                     <Formik
                         initialValues={initialValues}
                         onSubmit={values => {
@@ -165,7 +165,7 @@ const PlanDetails = () => {
                                         );
                                     }}
                                 />
-                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, marginBottom: 5, marginLeft: 5 }}>Description</Title>
+                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, marginBottom: 5, marginLeft: 5, fontFamily: 'MabryPro' }}>Description</Title>
                                 <CustomTextInput
                                     onChangeText={handleChange('description')}
                                     onBlur={handleBlur('description')}
@@ -174,21 +174,21 @@ const PlanDetails = () => {
                                     multiline={true}
                                     numberOfLines={10}
                                 />
-                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, marginBottom: 5, marginLeft: 5 }}>Cost Estimate</Title>
+                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, marginBottom: 5, marginLeft: 5, fontFamily: 'MabryPro' }}>Cost Estimate</Title>
                                 <CustomTextInput
                                     onChangeText={handleChange('costEstimation')}
                                     onBlur={handleBlur('costEstimation')}
                                     value={values.costEstimation}
                                     placeholder={'Enter Cost Estimate'}
                                 />
-                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, marginBottom: 5, marginLeft: 5 }}>Proof of Damage</Title>
+                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, marginBottom: 5, marginLeft: 5, fontFamily: 'MabryPro' }}>Proof of Damage</Title>
                                 <View style={styles.imageUpload}>
-                                    <Text style={{ color: Colors.gray, fontSize: 14 }}>Upload Damage Images, Videos or Documents</Text>
+                                    <Text style={{ color: Colors.gray, fontSize: 14, fontFamily: 'MabryPro' }}>Upload Damage Images, Videos or Documents</Text>
                                     <SimpleLineIcons name="cloud-upload" color={Colors.gray} size={20} />
                                 </View>
-                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, marginBottom: 5, marginLeft: 5 }}>Other Documents</Title>
+                                <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, marginBottom: 5, marginLeft: 5, fontFamily: 'MabryPro' }}>Other Documents</Title>
                                 <View style={[styles.imageUpload]}>
-                                    <Text style={{ color: Colors.gray, fontSize: 14 }}>Upload anything else that could help with your claims</Text>
+                                    <Text style={{ color: Colors.gray, fontSize: 14, fontFamily: 'MabryPro' }}>Upload anything else that could help with your claims</Text>
                                     <SimpleLineIcons name="cloud-upload" color={Colors.gray} size={20} />
                                 </View>
                                
@@ -227,6 +227,7 @@ const styles = StyleSheet.create({
         color: Colors.gray,
         fontSize: 14,
         marginHorizontal: 12,
+        fontFamily: 'MabryPro'
     },
     dropdown3RowChildStyle: {
         flex: 1,
@@ -241,5 +242,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 14,
         marginHorizontal: 12,
+        fontFamily: 'MabryPro'
     },
 })

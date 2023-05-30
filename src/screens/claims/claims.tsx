@@ -25,7 +25,7 @@ const Claims = ({ navigation }: any) => {
                         <View style={{ width: "66%", alignSelf: "center" }}>
                             <Button onPress={() => navigation.navigate("startClaim")} title="start claim"></Button>
                         </View>}
-                    renderItem={({ item }: any) => <Title>existing claims</Title>}
+                    renderItem={({ item }: any) => <Title style={{ fontFamily: 'MabryPro' }}>existing claims ? </Title>}
                 />
 
             </View>

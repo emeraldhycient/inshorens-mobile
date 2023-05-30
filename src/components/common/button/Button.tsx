@@ -29,7 +29,7 @@ const Button = ({ bgColor, onPress, color, disabled, outlined, bordered, loading
                 {
                     !loading ?
                         children ? children :
-                            <Text style={{ color: color ? color : Colors.white, fontSize: 14, fontWeight: "500" }}>{title}</Text>
+                            <Text style={{ color: color ? color : Colors.white, fontSize: 14, fontWeight: "500", fontFamily: 'MabryPro' }}>{title}</Text>
                         :
                         <ActivityIndicator size="small" color={Colors.shadePink6} />
                 }

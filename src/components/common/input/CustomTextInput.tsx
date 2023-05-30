@@ -47,5 +47,6 @@ const styles = StyleSheet.create({
         outlineStyle: 'none',
         height: 49,
         marginBottom: 10,
+         fontFamily:'MabryPro'
     },
 });

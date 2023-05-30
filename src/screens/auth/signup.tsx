@@ -13,6 +13,7 @@ import {
 } from 'react-query'
 import { createAccount } from '../../services/backend/auth.service'
 import LoadingModal from '../../components/common/LoadingModal'
+import Header from '../../components/common/header/Header'
 
 const initialValues = {
     firstName: '',
@@ -59,9 +60,9 @@ const Signup = ({ navigation }: { navigation: any }) => {
 
     return (
         <ScrollView style={{ backgroundColor: Colors.bg }}>
-            <View style={{ flex: 1, marginTop: Spacing.SPACE_40, paddingHorizontal: Spacing.SPACE_30, paddingVertical: Spacing.SPACE_30 }}>
-                <Text style={{ fontSize: Spacing.SPACE_24, color: Colors.lightDark, marginBottom: Spacing.SPACE_6 }}>Create Account</Text>
-                <Caption style={{ color: Colors.gray, fontSize: Spacing.SPACE_12 }}>Create an account to continue to an awesome and wonderful experience.</Caption>
+            <Header showBack={true} title="Sign In" titleColor={Colors.black} bgColor={"transparent"} hasBg={true} />
+            <View style={{ flex: 1, paddingHorizontal: Spacing.SPACE_30, paddingBottom: Spacing.SPACE_30 }}>
+                <Caption style={{ color: Colors.gray, fontSize:13, fontFamily: 'MabryPro' }}>Create an account to continue to an awesome and wonderful experience.</Caption>
                 {
                     isLoading ? <LoadingModal/> : null
                 }
@@ -75,35 +76,35 @@ const Signup = ({ navigation }: { navigation: any }) => {
                 >
                     {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
                         <View style={{ marginTop: Spacing.SPACE_20 }}>
-                            <Caption style={{ color: Colors.lightDark }}>First Name</Caption>
+                            <Caption style={{ color: Colors.lightDark, fontFamily: 'MabryPro' }}>First Name</Caption>
                             <CustomTextInput placeholder={'FirstName '} onChangeText={handleChange('firstName')}
                                 onBlur={handleBlur('firstName')}
                                 value={values.firstName} />
                             {errors.firstName && touched.firstName ? (
                                 <Caption style={{ color: Colors.shadePink6}}>{errors.firstName}</Caption>
                             ) : null}
-                            <Caption style={{ color: Colors.lightDark }}>Last Name</Caption>
+                            <Caption style={{ color: Colors.lightDark, fontFamily: 'MabryPro' }}>Last Name</Caption>
                             <CustomTextInput placeholder={' LastName'} onChangeText={handleChange('lastName')}
                                 onBlur={handleBlur('lastName')}
                                 value={values.lastName} />
                             {errors.lastName && touched.lastName ? (
-                                <Caption style={{ color: Colors.shadePink6}}>{errors.lastName}</Caption>
+                                <Caption style={{ color: Colors.shadePink6, fontFamily: 'MabryPro' }}>{errors.lastName}</Caption>
                             ) : null}
-                            <Caption style={{ color: Colors.lightDark }}>Email Address</Caption>
+                            <Caption style={{ color: Colors.lightDark, fontFamily: 'MabryPro' }}>Email Address</Caption>
                             <CustomTextInput placeholder={'manyman@inshorens.com'} onChangeText={handleChange('email')}
                                 onBlur={handleBlur('email')}
                                 value={values.email} />
                             {errors.email && touched.email ? (
-                                <Caption style={{ color: Colors.shadePink6}}>{errors.email}</Caption>
+                                <Caption style={{ color: Colors.shadePink6, fontFamily: 'MabryPro' }}>{errors.email}</Caption>
                             ) : null}
                             <Caption style={{ color: Colors.lightDark }}>Phone Number</Caption>
                             <CustomTextInput placeholder={'2348012345678'} onChangeText={handleChange('phoneNumber')}
                                 onBlur={handleBlur('phoneNumber')}
                                 value={values.phoneNumber} />
                             {errors.phoneNumber && touched.phoneNumber ? (
-                                <Caption style={{ color: Colors.shadePink6}}>{errors.phoneNumber}</Caption>
+                                <Caption style={{ color: Colors.shadePink6, fontFamily: 'MabryPro' }}>{errors.phoneNumber}</Caption>
                             ) : null}
-                            <Caption style={{ color: Colors.lightDark }}>Password</Caption>
+                            <Caption style={{ color: Colors.lightDark, fontFamily: 'MabryPro' }}>Password</Caption>
                             <CustomTextInput placeholder={'long password you can remember'}
                                 onChangeText={handleChange('password')}
                                 onBlur={handleBlur('password')}
@@ -121,9 +122,9 @@ const Signup = ({ navigation }: { navigation: any }) => {
                                 }
                             />
                             {errors.password && touched.password ? (
-                                <Caption style={{ color: Colors.shadePink6 }}>{errors.password}</Caption>
+                                <Caption style={{ color: Colors.shadePink6, fontFamily: 'MabryPro' }}>{errors.password}</Caption>
                             ) : null}
-                            <Caption style={{ color: Colors.lightDark }}>Confirm Password</Caption>
+                            <Caption style={{ color: Colors.lightDark, fontFamily: 'MabryPro' }}>Confirm Password</Caption>
                             <CustomTextInput placeholder={'long password you can remember'}
                                 onChangeText={handleChange('confirm_password')}
                                 onBlur={handleBlur('confirm_password')}
@@ -140,11 +141,11 @@ const Signup = ({ navigation }: { navigation: any }) => {
                                 }
                             />
                             {errors.confirm_password && touched.confirm_password ? (
-                                <Caption style={{ color: Colors.shadePink6 }}>{errors.confirm_password}</Caption>
+                                <Caption style={{ color: Colors.shadePink6, fontFamily: 'MabryPro' }}>{errors.confirm_password}</Caption>
                             ) : null}
                             <Button onPress={handleSubmit} title={`${isLoading ? 'loading' :'Sign Up'}`} my={10}  />
                             <TouchableRipple onPress={() => navigation.navigate("login")} >
-                                <Title style={{ color: Colors.baseColor, fontSize: Spacing.SPACE_14 }}>Already Have An Account? Sign In</Title>
+                                <Title style={{ color: Colors.baseColor, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>Already Have An Account? Sign In</Title>
                             </TouchableRipple>
                         </View>
                     )}
