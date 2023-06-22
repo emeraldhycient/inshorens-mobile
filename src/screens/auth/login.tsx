@@ -73,6 +73,7 @@ const Login = ({ navigation }: { navigation: any }) => {
               <CustomTextInput onChangeText={handleChange('email')}
                 onBlur={handleBlur('email')}
                 value={values.email}
+                keyboardType='email-address'
                 placeholder={'manyman@inshorens.com'}
               />
               {errors.email && touched.email ? (
