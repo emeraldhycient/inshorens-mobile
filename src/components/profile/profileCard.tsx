@@ -12,7 +12,7 @@ function ProfileCard() {
     const refRBSheet = useRef();
     const user = useAuthenticationState((state: any) => state.authentication.user)
 
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState("");
 
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
@@ -35,7 +35,7 @@ function ProfileCard() {
       <>
       <View style={{ backgroundColor: Colors.white, height: 75, width: "100%", borderRadius: 50, borderWidth: 1.4, borderColor: Colors.lightGray, padding: 16, justifyContent: "space-between", flexDirection: "row", alignItems: "center" }}>
                 <TouchableRipple onPress={pickImage} style={{ backgroundColor: "#010067", height: 40, width: 40, borderRadius: 50, alignItems: "center", justifyContent: "center" }}>
-                    <Image source={{ uri: image? image : user?.profileImage ?? 'https://i.im.ge/2023/04/06/Ig2k7x.NAME.png' }} style={{ height: 38, width: 38, borderRadius: 50 }} resizeMode='contain' />
+                    <Image source={{ uri: image? image : user?.profileImage ?? 'https://i.im.ge/2023/04/06/Ig2k7x.NAME.png' }} style={{ height: 35, width: 35, borderRadius: 50 }} resizeMode='contain' />
           </TouchableRipple>
           <View style={{ flexDirection: "column", justifyContent: "center", width: "50%" }}>
                     <Caption style={{ color: Colors.lightDark, fontFamily: 'MabryPro' }}>{user?.email ?? "hey man you are supposed to be logged in"}</Caption>
