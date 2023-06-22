@@ -47,16 +47,22 @@ const Profile = ({ navigation }: any) => {
         <View style={{ backgroundColor: Colors.bg, height: "100%" }}>
             <Header showBack={true} title="Profile" titleColor={Colors.black} bgColor={"transparent"} hasBg={true} />
             <ScrollView style={{ paddingHorizontal: 14 }}>
-                <ProfileCard />
+                <TouchableRipple onPress={() => navigation.navigate("accountInfo")}>
+                    <ProfileCard />
+                </TouchableRipple>
                 <View style={{ marginTop: 20, paddingHorizontal: 5 }}>
                     <Title style={{ marginBottom: 10, fontSize: 16, fontFamily: 'MabryPro' }}>Account</Title>
-                    <Tiles title='Account Information' icon={require('../../../assets/icons/profile/user.png')} url='' />
-                    <Tiles title='KYC Information' icon={require('../../../assets/icons/profile/privacy.png')} url='' />
-                    <Tiles title='Terms of Service' icon={require('../../../assets/icons/profile/terms.png')} url='' />
-                    <Tiles title='Support' icon={require('../../../assets/icons/profile/support.png')} url='' />
-                    <Tiles title='Change Password' icon={require('../../../assets/icons/profile/settings.png')} url='' />
+                    <TouchableRipple onPress={() => navigation.navigate("accountInfo")}>
+                        <Tiles title='Account Information' image={require('../../../assets/icons/profile/user.png')} />
+                    </TouchableRipple>
+                    <Tiles title='KYC Information' image={require('../../../assets/icons/profile/privacy.png')} />
+                    <TouchableRipple onPress={() => navigation.navigate("termsOfService")}>
+                        <Tiles title='Terms of Service' image={require('../../../assets/icons/profile/terms.png')} />
+                    </TouchableRipple>
+                    <Tiles title='Support' image={require('../../../assets/icons/profile/support.png')} />
+                    <Tiles title='Change Password' image={require('../../../assets/icons/profile/settings.png')} />
                     <TouchableRipple onPress={handleLogout}>
-                        <Tiles title='Log Out' icon={require('../../../assets/icons/profile/logout.png')} url='' />
+                        <Tiles title='Log Out' image={require('../../../assets/icons/profile/logout.png')} />
                     </TouchableRipple>
                 </View>
             </ScrollView>

@@ -50,8 +50,8 @@ export type TcustomHeaderProps = {
 
 export type TprofileTilesProps = {
     title: string,
-    icon: string,
-    url: string
+    icon?: any,
+    image?:string
 }
 
 export type TcreateAccount = { email : string, phoneNumber : string, firstName : string, lastName : string, password : string }

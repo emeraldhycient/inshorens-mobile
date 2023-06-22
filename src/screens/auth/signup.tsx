@@ -93,6 +93,7 @@ const Signup = ({ navigation }: { navigation: any }) => {
                             <Caption style={{ color: Colors.lightDark, fontFamily: 'MabryPro' }}>Email Address</Caption>
                             <CustomTextInput placeholder={'manyman@inshorens.com'} onChangeText={handleChange('email')}
                                 onBlur={handleBlur('email')}
+                                keyboardType='email-address'
                                 value={values.email} />
                             {errors.email && touched.email ? (
                                 <Caption style={{ color: Colors.shadePink6, fontFamily: 'MabryPro' }}>{errors.email}</Caption>
