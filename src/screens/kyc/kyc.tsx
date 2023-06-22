@@ -16,20 +16,16 @@ const Kyc = ({ navigation }: any) => {
 
     const user = useAuthenticationState((state: any) => state.authentication.user)
     const claimtypes = [{
-        name: "Water",
+        name: "National Id Card",
         id: 1
     },
     {
-        name: "Water",
-        id: 1
+        name: "Permanent Voters Card",
+        id: 2
     },
     {
-        name: "Water",
-        id: 1
-    },
-    {
-        name: "Water",
-        id: 1
+        name: "Nin Slip",
+        id: 3
     }
     ]
 
