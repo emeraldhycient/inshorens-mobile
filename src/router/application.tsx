@@ -6,6 +6,7 @@ import AccountInfo from '../screens/profile&settings/accountInfo';
 import TermsOfService from '../screens/profile&settings/termsOfService';
 import Support from '../screens/profile&settings/support';
 import ResetPassword from '../screens/auth/resetPassword';
+import Kyc from '../screens/kyc/kyc';
 
 const Stack = createStackNavigator();
 const { Navigator, Screen } = Stack;
@@ -33,6 +34,9 @@ const Application = () => {
                 headerShown: false,
             }} />
             <Screen name="resetpassword" component={ResetPassword} options={{
+                headerShown: false,
+            }} />
+            <Screen name="kyc" component={Kyc} options={{
                 headerShown: false,
             }} />
           

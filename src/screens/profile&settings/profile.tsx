@@ -53,7 +53,9 @@ const Profile = ({ navigation }: any) => {
                     <TouchableRipple onPress={() => navigation.navigate("accountInfo")}>
                         <Tiles title='Account Information' image={require('../../../assets/icons/profile/user.png')} />
                     </TouchableRipple>
-                    <Tiles title='KYC Information' image={require('../../../assets/icons/profile/privacy.png')} />
+                    <TouchableRipple onPress={() => navigation.navigate("kyc")}>
+                        <Tiles title='KYC Information' image={require('../../../assets/icons/profile/privacy.png')} />
+                    </TouchableRipple>
                     <TouchableRipple onPress={() => navigation.navigate("termsOfService")}>
                         <Tiles title='Terms of Service' image={require('../../../assets/icons/profile/terms.png')} />
                     </TouchableRipple>

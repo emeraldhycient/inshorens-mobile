@@ -119,12 +119,12 @@ const StartClaim = ({ navigation }: any) => {
                         />
                         <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, marginBottom: 5, marginLeft: 5, fontFamily: 'MabryPro' }}>Proof of Damage</Title>
                         <View style={styles.imageUpload}>
-                            <Text style={{ color: Colors.gray, fontSize: 14, fontFamily: 'MabryPro' }}>Upload Damage Images, Videos or Documents</Text>
+                            <Title style={{ color: Colors.gray, fontSize: 14, fontFamily: 'MabryPro' }}>Upload Damage Images, Videos or Documents</Title>
                             <SimpleLineIcons name="cloud-upload" color={Colors.gray} size={20} />
                         </View>
                         <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, marginBottom: 5, marginLeft: 5 }}>Other Documents</Title>
                         <View style={[styles.imageUpload]}>
-                            <Text style={{ color: Colors.gray, fontSize: 14, fontFamily: 'MabryPro' }}>Upload anything else that could help with your claims</Text>
+                            <Title style={{ color: Colors.gray, fontSize: 14, fontFamily: 'MabryPro' }}>Upload anything else that could help with your claims</Title>
                             <SimpleLineIcons name="cloud-upload" color={Colors.gray} size={20} />
                         </View>
                         <View style={{ flexDirection: 'row',alignItems:"center" }}>
