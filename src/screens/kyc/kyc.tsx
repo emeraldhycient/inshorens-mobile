@@ -78,7 +78,7 @@ const Kyc = ({ navigation }: any) => {
                 <Title style={{ color: Colors.lightDark, fontSize: Spacing.SPACE_14, marginBottom: 5, marginLeft: 5, fontFamily: 'MabryPro' }}>Document</Title>
                 {
                     image ?
-                        <TouchableRipple onPress={pickImage} style={{marginBottom:10}}>
+                        <TouchableRipple onPress={pickImage} style={{marginBottom:20}}>
                             <Image source={{ uri: image }} style={{ height: 150, width: 150, borderRadius: 50 }} resizeMode='contain' />
                         </TouchableRipple> :
                         <TouchableRipple onPress={pickImage}>
