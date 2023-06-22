@@ -4,6 +4,8 @@ import StartClaim from '../screens/claims/startClaim';
 import PlanDetails from '../screens/dashboard/planDetails';
 import AccountInfo from '../screens/profile&settings/accountInfo';
 import TermsOfService from '../screens/profile&settings/termsOfService';
+import Support from '../screens/profile&settings/support';
+import ResetPassword from '../screens/auth/resetPassword';
 
 const Stack = createStackNavigator();
 const { Navigator, Screen } = Stack;
@@ -25,6 +27,12 @@ const Application = () => {
                 headerShown: false,
             }} />
             <Screen name="termsOfService" component={TermsOfService} options={{
+                headerShown: false,
+            }} />
+            <Screen name="support" component={Support} options={{
+                headerShown: false,
+            }} />
+            <Screen name="resetpassword" component={ResetPassword} options={{
                 headerShown: false,
             }} />
           

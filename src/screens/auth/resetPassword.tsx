@@ -100,8 +100,8 @@ const ResetPassword = ({ navigation }: { navigation: any }) => {
                         </>
                     }
 
-                    <TouchableRipple onPress={() => navigation.navigate("login")} >
-                        <Title style={{ color: Colors.baseColor, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>Remember Password? Back to Login</Title>
+                    <TouchableRipple onPress={() => navigation.goBack()} >
+                        <Title style={{ color: Colors.baseColor, fontSize: Spacing.SPACE_14, fontFamily: 'MabryPro' }}>Remember Password? Go Back </Title>
                     </TouchableRipple>
                 </View>
 

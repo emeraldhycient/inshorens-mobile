@@ -59,8 +59,12 @@ const Profile = ({ navigation }: any) => {
                     <TouchableRipple onPress={() => navigation.navigate("termsOfService")}>
                         <Tiles title='Terms of Service' image={require('../../../assets/icons/profile/terms.png')} />
                     </TouchableRipple>
-                    <Tiles title='Support' image={require('../../../assets/icons/profile/support.png')} />
-                    <Tiles title='Change Password' image={require('../../../assets/icons/profile/settings.png')} />
+                    <TouchableRipple onPress={() => navigation.navigate("support")}>
+                        <Tiles title='Support' image={require('../../../assets/icons/profile/support.png')} />
+                    </TouchableRipple>
+                    <TouchableRipple onPress={() => navigation.navigate("resetpassword")}>
+                        <Tiles title='Change Password' image={require('../../../assets/icons/profile/settings.png')} />
+                    </TouchableRipple>
                     <TouchableRipple onPress={handleLogout}>
                         <Tiles title='Log Out' image={require('../../../assets/icons/profile/logout.png')} />
                     </TouchableRipple>
