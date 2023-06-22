@@ -1,12 +1,10 @@
 import { StyleSheet, View, Alert, ScrollView } from 'react-native'
-import React, { useRef } from 'react'
+import React from 'react'
 import Header from '../../components/common/header/Header'
 import Colors from '../../themes/Colors'
-import Button from '../../components/common/button/Button'
 import ProfileCard from '../../components/profile/profileCard'
 import { Title, TouchableRipple } from 'react-native-paper'
 import Tiles from '../../components/profile/tiles'
-import settingsData from "../../constants/settingsData.json"
 import useAuthenticationState from '../../states/authentication'
 
 const Profile = ({ navigation }: any) => {
