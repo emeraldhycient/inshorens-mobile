@@ -55,5 +55,6 @@ export type TprofileTilesProps = {
 }
 
 export type TcreateAccount = { email : string, phoneNumber : string, firstName : string, lastName : string, password : string }
-export type Tlogin = { email : string,password : string }
+export type Tlogin = { email: string, password: string }
+export type TplolicyById = { policyId: string }
 

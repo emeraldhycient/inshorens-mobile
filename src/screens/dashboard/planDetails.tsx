@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, FlatList, Text, View,Image } from 'react-native'
+import { ScrollView, StyleSheet, FlatList, Text, View,Image, useWindowDimensions } from 'react-native'
 import React,{useRef} from 'react'
 import Header from '../../components/common/header/Header'
 import Hero from '../../components/common/hero'
@@ -26,18 +26,23 @@ const claimSchema = Yup.object().shape({
     costEstimation: Yup.string().required('Cost Estimation is required'),
 });
 
-const PlanDetails = () => {
+const PlanDetails = ({route}:any) => {
 
     const refRBSheet = useRef();
 
+    const { id, title, description, banner, coverages } = route?.params
+    
+    const {height} = useWindowDimensions()
+
     return (
-        <ScrollView style={{ backgroundColor: Colors.white }}>
+        <>
             <Hero imageUrl={"https://i.im.ge/2023/03/30/I7814S.FlexImg.png"} image={""} >
-                <Header showBack={true} title={"Laptop Insurance"} hasBg={true} hideScanner={true} titleColor={Colors.white} />
+                <Header showBack={true} title={title} hasBg={true} hideScanner={true} titleColor={Colors.white} />
             </Hero>
+        <ScrollView style={{ backgroundColor: Colors.white }}>
             <View style={{ marginTop: 20, paddingHorizontal: 10 }}>
-                <Title style={{ color: Colors.gray, fontSize: 16, fontFamily: 'MabryPro' }}>Our pillow insurance plan offers comprehensive coverage for a variety of scenarios, including accidental damage, theft, loss, and more.</Title>
-                <Title style={{ fontFamily: 'MabryPro' }}>Coverage for Theft:</Title>
+                <Title style={{ color: Colors.gray, fontSize: 16, fontFamily: 'MabryPro' }}>{description}</Title>
+                    <Title style={{ fontFamily: 'MabryPro' }}>{title} Covers:</Title>
                 <List.Item
                     title="Flood Damage"
                     titleStyle={{ fontSize: 14, color: Colors.gray, fontFamily: 'MabryPro' }}
@@ -92,7 +97,7 @@ const PlanDetails = () => {
                 ref={refRBSheet}
                 closeOnDragDown={true}
                 closeOnPressMask={true}
-                height={1000}
+                height={height - 100}
                 customStyles={{
                     container: {
                         borderTopLeftRadius: 20,
@@ -112,7 +117,7 @@ const PlanDetails = () => {
                         <TouchableRipple onPress={() => refRBSheet?.current?.close()}>
                             <EvilIcons name="arrow-left" size={30} color={Colors.black} />
                         </TouchableRipple>
-                        <Title style={{ fontWeight: '500', color: Colors.lightDark, marginLeft: 10, fontFamily: 'MabryPro' }}>Insure a Laptop</Title>
+                            <Title style={{ fontWeight: '500', color: Colors.lightDark, marginLeft: 10, fontFamily: 'MabryPro' }}>{title}</Title>
                         <View></View>
                     </View>
                     <Caption style={{ textAlign: "center", marginTop: 10, fontFamily: 'MabryPro' }}>Fill in the information below to start your PC insurance journey with us.</Caption>
@@ -198,7 +203,9 @@ const PlanDetails = () => {
                     </Formik>
                 </ScrollView>
             </RBSheet>
-        </ScrollView>
+            </ScrollView>
+        </>
+
     )
 }
 
