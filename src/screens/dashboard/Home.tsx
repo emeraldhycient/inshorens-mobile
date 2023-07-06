@@ -50,7 +50,7 @@ const Home = ({ navigation }: any) => {
                 style={{ paddingHorizontal: 14, }}
                 keyExtractor={({ _, index }: any) => index}
                 data={data?.data?.policy}
-                ListEmptyComponent={() => <Empty message={isLoading ? 'please hold while we fetch policies' : 'No policies found, create one now!'} />}
+                ListEmptyComponent={() => <Empty message={isLoading ? 'please hold while we fetch available policies' : 'No policies found, create one now!'} />}
                 renderItem={({ item }: any) =>
                     <TouchableRipple style={{ width: "97%", marginHorizontal: 6, marginVertical: 6, }} onPress={() => navigation.navigate("planDetails",{...item})}>
                         <PolicyCard data={item}  />
