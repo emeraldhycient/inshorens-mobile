@@ -27,6 +27,7 @@ const Home = ({ navigation }: any) => {
     })
 
     return (
+        <>
         <ScrollView style={{ backgroundColor: Colors.bg }}>
             <Hero image={bgImage} >
                 <Header showBack={false} />
@@ -57,7 +58,8 @@ const Home = ({ navigation }: any) => {
                     </TouchableRipple>
                 }
             />
-        </ScrollView>
+            </ScrollView>
+            </>
     )
 }
 

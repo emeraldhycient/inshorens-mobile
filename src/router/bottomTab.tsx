@@ -30,7 +30,7 @@ function BottomTab() {
                 ),
             }} />
             <Tab.Screen name="expenses" component={Expense} options={{
-                tabBarLabel: 'expense',
+                tabBarLabel: 'expenses',
                 tabBarIcon: ({ color }) => (
                     <Image source={require("../../assets/icons/bottomtab/claim.png")} style={styles.icon} />
                 ),
