@@ -26,6 +26,7 @@ const Home = ({ navigation }: any) => {
         },
     })
 
+
     return (
         <>
         <ScrollView style={{ backgroundColor: Colors.bg }}>
@@ -53,7 +54,7 @@ const Home = ({ navigation }: any) => {
                 data={data?.data?.policy}
                 ListEmptyComponent={() => <Empty message={isLoading ? 'please hold while we fetch available policies' : 'No policies found, create one now!'} />}
                 renderItem={({ item }: any) =>
-                    <TouchableRipple style={{ width: "97%", marginHorizontal: 6, marginVertical: 6, }} onPress={() => navigation.navigate("planDetails",{...item})}>
+                    <TouchableRipple key={item?.id} style={{ width: "97%", marginHorizontal: 6, marginVertical: 6, }} onPress={() => navigation.navigate("planDetails",{...item})}>
                         <PolicyCard data={item}  />
                     </TouchableRipple>
                 }
