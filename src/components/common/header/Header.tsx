@@ -20,7 +20,7 @@ const Header = ({
     ...rest
 }: TcustomHeaderProps) => {
 
-    const refRBSheet = useRef();
+    const refRBSheet = useRef <RBSheet>();
 
     const navigation = useNavigation()
 

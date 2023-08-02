@@ -9,7 +9,7 @@ import useAuthenticationState from '../../states/authentication';
 import * as ImagePicker from 'expo-image-picker';
 
 function ProfileCard() {
-    const refRBSheet = useRef();
+    const refRBSheet = useRef<RBSheet>();
     const user = useAuthenticationState((state: any) => state.authentication.user)
 
     const [image, setImage] = useState("");

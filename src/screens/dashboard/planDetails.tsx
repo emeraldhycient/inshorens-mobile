@@ -29,7 +29,7 @@ const claimSchema = Yup.object().shape({
 
 const PlanDetails = ({ route }: any) => {
 
-    const refRBSheet = useRef();
+    const refRBSheet = useRef<RBSheet>();
 
     const { id, title, description, banner, coverages } = route?.params
 

@@ -46,7 +46,7 @@ const StartClaim = ({ navigation }: any) => {
     }
     ]
 
-    const refRBSheet = useRef();
+    const refRBSheet = useRef<RBSheet>();
 
 
     return (

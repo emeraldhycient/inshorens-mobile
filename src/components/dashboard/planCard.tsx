@@ -12,7 +12,7 @@ import EvilIcons from "react-native-vector-icons/EvilIcons"
 const PlanCard = ({ data, url }: any) => {
 
     const navigation = useNavigation()
-    const refRBSheet = useRef();
+    const refRBSheet = useRef <RBSheet>();
 
     const { width } = useWindowDimensions()
 
