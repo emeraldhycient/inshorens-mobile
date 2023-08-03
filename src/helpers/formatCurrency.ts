@@ -1,7 +1,11 @@
-const locale = 'en-US'; // Use a specific locale, like 'en-US', 'fr-FR', 'de-DE', etc.
+import useAuthenticationState from "../states/authentication";
 
-export const formatCurrency = ({ amount, locale = "en-NG" }: { amount: number, locale?: string }) => {
-    const currencyCode = 'NGN';
+//const locale = 'en-US'; // Use a specific locale, like 'en-US', 'fr-FR', 'de-DE', etc.
+const storeData = useAuthenticationState.getState();
+
+export const formatCurrency = ({ amount, locale = `en-${storeData?.authentication?.user?.location?.country_code}` }: { amount: number, locale?: string }) => {
+    console.log(locale)
+    const currencyCode = storeData?.authentication?.user?.location?.country_code === 'NG' ? 'NGN' :"USD";
     const currencyStyle = 'symbol'; // Other options: 'code', 'name'
     const minimumFractionDigits = 2;
     const maximumFractionDigits = 2;

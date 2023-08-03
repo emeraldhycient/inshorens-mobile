@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, useWindowDimensions } from 'react-native'
 import React, { useRef } from "react";
 import Colors from '../../themes/Colors'
-import { Caption, TouchableRipple,Title } from 'react-native-paper'
+import { Caption, TouchableRipple, Title } from 'react-native-paper'
 import Button from '../common/button/Button'
 import { useNavigation } from '@react-navigation/native'
 import RBSheet from "react-native-raw-bottom-sheet";
@@ -13,26 +13,26 @@ import { formatCurrency } from '../../helpers/formatCurrency';
 const PlanCard = ({ data, url }: any) => {
 
     const navigation = useNavigation()
-    const refRBSheet = useRef <RBSheet>();
+    const refRBSheet = useRef<RBSheet>();
 
     const { width } = useWindowDimensions()
 
     return (
-        <View style={[{ backgroundColor: Colors.baseColor, height: 150, width: width - 60, borderRadius: 16, marginHorizontal: 6, padding: 16,justifyContent:"space-between" }, styles.shadow]}>
+        <View style={[{ backgroundColor: Colors.baseColor, height: 150, width: width - 60, borderRadius: 16, marginHorizontal: 6, padding: 16, justifyContent: "space-between" }, styles.shadow]}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View>
                     <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>Plan Price</Caption>
-                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>{formatCurrency({amount : data?.price})??  "*********"}</Caption>
+                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>{formatCurrency({ amount: data?.price }) ?? "*********"}</Caption>
                 </View>
                 <View>
                     <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>Status</Caption>
-                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>{data?.isActive ??  "*********"}</Caption>
+                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>{data ? data?.isActive ? "Active" : "Inactive" : "*********"}</Caption>
                 </View>
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View>
                     <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>Plan Name</Caption>
-                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>{data?.title ??  "*********"}</Caption>
+                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>{data?.title ?? "*********"}</Caption>
                 </View>
                 <Button onPress={() => url ? navigation.navigate(url as never, data as never) : refRBSheet?.current?.open()}
                     title={data ? "View Details ✌️" : "Create a Plan"}
@@ -62,10 +62,10 @@ const PlanCard = ({ data, url }: any) => {
                         <TouchableRipple onPress={() => refRBSheet?.current?.close()}>
                             <EvilIcons name="arrow-left" size={30} color={Colors.black} />
                         </TouchableRipple>
-                        <Title style={{ fontWeight: '500', color: Colors.lightDark, marginLeft: 10, fontFamily: 'MabryPro' }}>iPhone 14 Pro Max</Title>
+                        <Title style={{ fontWeight: '500', color: Colors.lightDark, marginLeft: 10, fontFamily: 'MabryPro' }}>{data?.title ?? "*********"}</Title>
                         <View></View>
                     </View>
-                   
+
                 </View>
             </RBSheet>
         </View>
