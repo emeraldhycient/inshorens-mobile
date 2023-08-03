@@ -6,6 +6,7 @@ import Button from '../common/button/Button'
 import { useNavigation } from '@react-navigation/native'
 import RBSheet from "react-native-raw-bottom-sheet";
 import EvilIcons from "react-native-vector-icons/EvilIcons"
+import { formatCurrency } from '../../helpers/formatCurrency';
 
 
 //remeber to add the data type to the props
@@ -21,20 +22,20 @@ const PlanCard = ({ data, url }: any) => {
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View>
                     <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>Plan Price</Caption>
-                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>*********</Caption>
+                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>{formatCurrency({amount : data?.price})??  "*********"}</Caption>
                 </View>
                 <View>
                     <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>Status</Caption>
-                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>*********</Caption>
+                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>{data?.isActive ??  "*********"}</Caption>
                 </View>
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                 <View>
                     <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>Plan Name</Caption>
-                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>*********</Caption>
+                    <Caption style={{ color: Colors.white, fontFamily: 'MabryPro' }}>{data?.title ??  "*********"}</Caption>
                 </View>
                 <Button onPress={() => url ? navigation.navigate(url as never, data as never) : refRBSheet?.current?.open()}
-                    title="Create a Plan"
+                    title={data ? "View Details ✌️" : "Create a Plan"}
                     bgColor={Colors.white}
                     color={Colors.baseColor}
                     px={23}
