@@ -5,7 +5,7 @@ const storeData = useAuthenticationState.getState();
 
 export const formatCurrency = ({ amount, locale = `en-${storeData?.authentication?.user?.location?.country_code}` }: { amount: number, locale?: string }) => {
     console.log(locale)
-    const currencyCode = storeData?.authentication?.user?.location?.country_code === 'NG' ? 'NGN' :"USD";
+    const currencyCode = locale === 'en-NG' ? 'NGN' :"USD";
     const currencyStyle = 'symbol'; // Other options: 'code', 'name'
     const minimumFractionDigits = 2;
     const maximumFractionDigits = 2;
