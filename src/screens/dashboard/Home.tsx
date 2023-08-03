@@ -21,7 +21,7 @@ const Home = ({ navigation }: any) => {
         queryKey: ['policies'],
         queryFn: ({ queryKey }) => getPolicies(),
         onError(err: any) {
-            console.log(err)
+            console.error(err.response.status)
             new Alert().error(err?.response?.data?.message || err?.response?.statusText || "An error occured,check your network and try again.")
         },
     })
@@ -52,7 +52,7 @@ const Home = ({ navigation }: any) => {
                 style={{ paddingHorizontal: 14, }}
                 keyExtractor={({ _, index }: any) => index}
                 data={data?.data?.policy}
-                ListEmptyComponent={() => <Empty message={isLoading ? 'please hold while we fetch available policies' : 'No policies found, create one now!'} />}
+                ListEmptyComponent={() => <Empty message={isLoading ? 'please hold while we fetch available policies 💃' : 'omo, we couldnt load the policies o 😔!'} />}
                 renderItem={({ item }: any) =>
                     <TouchableRipple key={item?.id} style={{ width: "97%", marginHorizontal: 6, marginVertical: 6, }} onPress={() => navigation.navigate("planDetails",{...item})}>
                         <PolicyCard data={item}  />

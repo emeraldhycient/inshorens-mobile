@@ -13,6 +13,7 @@ import { Alert } from '../../helpers/alert'
 import LoadingModal from '../../components/common/LoadingModal'
 import useAuthenticationState from '../../states/authentication'
 import Header from '../../components/common/header/Header'
+import { setToken } from '../../states/storage/token'
 
 const initialValues = {
   email: '',
@@ -34,7 +35,7 @@ const Login = ({ navigation }: { navigation: any }) => {
 
   const setIsAuthenticated = useAuthenticationState((state: any) => state.setIsAuthenticated);
   const setUser = useAuthenticationState((state: any) => state.setUser);
-  const setToken = useAuthenticationState((state: any) => state.setToken);
+  const setTokenState = useAuthenticationState((state: any) => state.setToken);
 
   const { mutate, isLoading } = useMutation(login, {
     onSuccess: async (response) => {
@@ -42,7 +43,8 @@ const Login = ({ navigation }: { navigation: any }) => {
         new Alert().error("Please verify your email address to continue");
         return
       }
-      setToken(response?.data?.accessToken)
+      setTokenState(response?.data?.accessToken)
+      await setToken(response?.data?.accessToken)
       setIsAuthenticated(true)
       setUser(response?.data?.user)
       new Alert().success(response?.data?.message || "Login Successful");
